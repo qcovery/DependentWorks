@@ -1,6 +1,6 @@
 <?php
 /**
- * Factory for GetRecordDetails AJAX handler.
+ * Factory for GetDependentWorks AJAX handler.
  *
  * PHP version 7
  *
