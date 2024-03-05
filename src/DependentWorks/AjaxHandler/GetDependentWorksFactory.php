@@ -1,6 +1,6 @@
 <?php
 /**
- * Factory for GetRecordDetails AJAX handler.
+ * Factory for GetDependentWorks AJAX handler.
  *
  * PHP version 7
  *
@@ -39,7 +39,7 @@ use Interop\Container\ContainerInterface;
  * @link     https://vufind.org/wiki/development Wiki
  */
 class GetDependentWorksFactory
-    implements \Zend\ServiceManager\Factory\FactoryInterface
+    implements \Laminas\ServiceManager\Factory\FactoryInterface
 {
     /**
      * Create an object
