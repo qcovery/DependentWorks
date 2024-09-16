@@ -99,6 +99,9 @@ class GetDependentWorks extends AbstractBase implements TranslatorAwareInterface
         if (empty($ppn)) {
             return $this->formatResponse([]);
         }
+        // remove optional parameters appended to ppn
+        $ppn = preg_replace('/\?.*/', '', $ppn);
+
         $backend = $params->fromQuery('source');
         $results = $this->resultsManager->get($backend);
         $results->getOptions()->setLimitOptions([$limit, $limit]);
