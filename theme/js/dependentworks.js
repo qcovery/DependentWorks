@@ -15,7 +15,10 @@ jQuery(document).ready(function() {
         recordId = 0;
       }
     }
-    
+    // remove parameters from recordId
+    recordId = recordId.replace(/\?.*$/, '');
+    var sidParameter = new URL(location.href).searchParams.get('sid');
+
     if (pathParts[recordIndex] == 'Search2Record') {
       var SearchClassId = 'Search2';
       var ResultPath = 'Search2';
@@ -34,13 +37,17 @@ jQuery(document).ready(function() {
                     if (data.data[0]['filter'].length > 0) {
                         href += '&filter[]='+data.data[0]['filter'];
                     }
+                    if (sidParameter) {
+                        href += '&sid='+sidParameter;
+                    }
                     href += '&sort=year">' + data.data[0]['resultString'] + '</a>';
                     jQuery('ul#DependentWorks').append('<li>' + href + '</li>');
                 } else {
                     var visibleItems = (data.data.length < 3) ? data.data.length : 3;
                     for (var i = 0; i < visibleItems; i++) {
                         var title = data.data[i]['title'];
-                        var href = '<a href="/vufind/'+RecordPath+'/' + data.data[i]['id'] + '">' + title + '</a>';
+                        var href = '<a href="/vufind/'+RecordPath+'/' + data.data[i]['id']
+                            + (sidParameter ? '?sid='+sidParameter : '') + '">' + title + '</a>';
                         var item = data.data[i]['prefix'] + href;
                         jQuery('ul#DependentWorks').append('<li>' + item + '</li>');
                     }
@@ -48,7 +55,8 @@ jQuery(document).ready(function() {
                         jQuery('p#ToggleDependentWorksMore').attr('style', 'display:block');
                         for (var i = visibleItems; i < data.data.length; i++) {
                             var title = data.data[i]['title'];
-                            var href = '<a href="/vufind/'+RecordPath+'/' + data.data[i]['id'] + '">' + title + '</a>';
+                            var href = '<a href="/vufind/'+RecordPath+'/' + data.data[i]['id']
+                                + (sidParameter ? '?sid='+sidParameter : '') + '">' + title + '</a>';
                             var item = data.data[i]['prefix'] + href;
                             jQuery('ul#DependentWorksHidden').append('<li>' + item + '</li>');
                         }
