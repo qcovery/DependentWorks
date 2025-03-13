@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-    var recordId;
+    var recordId = '';
     var SearchClassId = 'Solr';
     var ResultPath = 'Search';
     var RecordPath = 'Record';
@@ -16,7 +16,7 @@ jQuery(document).ready(function() {
       }
     }
     // remove parameters from recordId
-    recordId = recordId.replace(/\?.*$/, '');
+    recordId = String(recordId).replace(/\?.*$/, '');
     var sidParameter = new URL(location.href).searchParams.get('sid');
 
     if (pathParts[recordIndex] == 'Search2Record') {
