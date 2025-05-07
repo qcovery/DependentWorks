@@ -34,7 +34,7 @@ use VuFind\I18n\Translator\TranslatorAwareInterface;
 use Laminas\Http\PhpEnvironment\Request;
 use Laminas\Mvc\Controller\Plugin\Params;
 use Laminas\Stdlib\Parameters;
-use Laminas\Config\Config;
+use VuFind\Config\Config;
 
 /**
  * This controller handles global AJAX functionality
